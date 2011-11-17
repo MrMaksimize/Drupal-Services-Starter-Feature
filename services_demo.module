@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * Code for the Services Demo feature.
+ */
+
+include_once('services_demo.features.inc');
+
+function services_demo_perm() {
+  return array(
+    'consume public api services',
+    'services access all nodes',
+    'services access all users',
+  );
+}
+
+/**
+ * Implementation of hook_services_resources().
+ */
+function services_demo_services_resources() {
+  require_once("resources/events_resource.inc");
+  $resources = array();
+  $resources += services_demo_events_resource_definition();
+  return $resources;
+}
